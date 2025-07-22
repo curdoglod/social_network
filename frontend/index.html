@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Social Network</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        /* Custom scrollbar for comment sections - optional */
+        .max-h-96::-webkit-scrollbar {
+            width: 6px;
+        }
+        .max-h-96::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .max-h-96::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 10px;
+        }
+        .max-h-96::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+    <div id="root"></div>
+
+    <!-- Load the components in order of dependency -->
+    <script type="text/babel" src="/static/services/api.js"></script>
+    <script type="text/babel" src="/static/components/Auth.js"></script>
+    <script type="text/babel" src="/static/components/Navigation.js"></script>
+    <script type="text/babel" src="/static/components/Sidebar.js"></script>
+    
+    <!-- New and updated components for posts and comments -->
+    <script type="text/babel" src="/static/components/CommentForm.js"></script> <!-- New: Comment form -->
+    <script type="text/babel" src="/static/components/PostForm.js"></script>     <!-- Was omitted, now included -->
+    <script type="text/babel" src="/static/components/PostItem.js"></script>     <!-- New: Displays a single post and its comments -->
+    <script type="text/babel" src="/static/components/Posts.js"></script>        <!-- Was omitted, now includes PostItem -->
+    <script type="text/babel" src="/static/components/Profile.js"></script>      <!-- User profile page -->
+    <script type="text/babel" src="/static/components/PostPage.js"></script>     <!-- Single post view -->
+    
+    <script type="text/babel" src="/static/app.js"></script>
+</body>
+</html>
+
+
