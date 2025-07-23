@@ -53,7 +53,7 @@ const Profile = ({ profileUser, currentUser, onProfileClick, onOpenPost }) => {
           )}
 
           {/* Avatar upload */}
-          {profileUser.id === currentUser.id && (
+          {(profileUser.id === currentUser.id || profileUser.user_id === currentUser.id || profileUser.id === currentUser.user_id) && (
             <>
               <div className="absolute inset-0 bg-black bg-opacity-40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

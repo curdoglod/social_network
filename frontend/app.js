@@ -48,20 +48,30 @@ const App = () => {
   }, [mainView, profileUser, postId]);
   
   
+  const normalizeUser = (data) => ({
+    id: data.id ?? data.user_id ?? null,
+    username: data.username,
+    is_superuser: data.is_superuser,
+    avatar_url: data.avatar_url,
+    email: data.email,
+  });
+
   const handleRegisterSuccess = (userData) => {
-    setUser(userData); // Set the user state with the new user's data.
-    try { sessionStorage.setItem('currentUser', JSON.stringify(userData)); } catch(e){}
+    const normalized = normalizeUser(userData);
+    setUser(normalized);
+    try { sessionStorage.setItem('currentUser', JSON.stringify(normalized)); } catch(e){}
   };
   
   
   const handleLoginSuccess = (userData, remember=false) => {
-    setUser(userData);
+    const normalized = normalizeUser(userData);
+    setUser(normalized);
     try {
       if (remember) {
-        localStorage.setItem('currentUser', JSON.stringify(userData));
+        localStorage.setItem('currentUser', JSON.stringify(normalized));
         sessionStorage.removeItem('currentUser');
       } else {
-        sessionStorage.setItem('currentUser', JSON.stringify(userData));
+        sessionStorage.setItem('currentUser', JSON.stringify(normalized));
         localStorage.removeItem('currentUser');
       }
     } catch(e){}
