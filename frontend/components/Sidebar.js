@@ -1,13 +1,11 @@
-const Sidebar = ({ user, onLogout, onProfileClick, onBack }) => {
+const Sidebar = ({ user, onLogout, onProfileClick, onHome }) => {
   if (!user) return null;
   const initial = user.username ? user.username.charAt(0).toUpperCase() : 'U';
   return (
     <div className="bg-white border-r h-screen p-4 md:p-6 flex flex-col fixed left-0 top-0 transition-all duration-200 w-16 md:w-64">
-      {/* Back button when in profile view */}
-      {onBack && (
-        <button onClick={onBack} className="flex items-center text-blue-600 hover:text-blue-800 mb-4 focus:outline-none">
-          <span className="text-2xl leading-none mr-0 md:mr-2">←</span>
-          <span className="hidden md:inline text-sm font-medium">Back</span>
+      {onHome && (
+        <button onClick={onHome} className="flex items-center text-blue-600 hover:text-blue-800 mb-4 focus:outline-none">
+          <span className="hidden md:inline text-sm font-medium">Home</span>
         </button>
       )}
 

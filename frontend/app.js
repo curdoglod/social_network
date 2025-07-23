@@ -96,8 +96,11 @@ const App = () => {
     setMainView('profile');
   };
   
-  const handleBack = () => {
-    window.history.back();
+  const handleGoHome = () => {
+    window.history.pushState({}, '', '/');
+    setMainView('feed');
+    setProfileUser(null);
+    setPostId(null);
   };
 
   const handleOpenPost = (post) => {
@@ -169,7 +172,7 @@ const App = () => {
             user={user} 
             onLogout={handleLogout} 
             onProfileClick={handleProfileClick}
-            onBack={mainView !== 'feed' ? handleBack : undefined}
+            onHome={handleGoHome}
           />
         )}
         {/* Main content area */}
@@ -186,7 +189,7 @@ const App = () => {
             <PostPage 
               postId={postId} 
               currentUser={user} 
-              onBackToFeed={handleBack}
+              onBackToFeed={handleGoHome}
               onProfileClick={handleOpenOtherProfile}
             />
           ) : (
